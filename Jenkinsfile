@@ -11,8 +11,13 @@ pipeline {
       stage('Build image') {
         steps {
           script {
+            try {
             docker.build('sentiment-analysis:v1 .')
+            } catch (Exception e) {
+               echo "Caught: ${e}"
+               error "Failed to build Docker image"
             }
+          }
         }
       }
 
