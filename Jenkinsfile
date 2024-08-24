@@ -10,13 +10,13 @@ pipeline {
 
       stage('Build image') {
         steps {
-          sh 'sudo docker build -t sentiment-analysis:v1 .'
+          sh 'docker build -t sentiment-analysis:v1 .'
           }
       }
 
       stage('Run image') {
         steps {
-          sh 'sudo docker run -d -p 4000:4000 --name simple_sentiment_analysis sentiment-analysis:v1'
+          sh 'docker run -d -p 4000:4000 --name simple_sentiment_analysis sentiment-analysis:v1'
         }
       }
 
